@@ -1,0 +1,6 @@
+<div *ngIf="vehicles" class="container-fluid">
+  <div class="row col-lg-12" *ngFor="let vehicle of vehicles; let index = index">
+    <div class="col-lg-1">{{ vehicle.options }}</div>
+    <div class="col-lg-1">{{ vehicle.stockNum }}</div>
+  </div>
+</div>
