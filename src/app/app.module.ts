@@ -7,17 +7,22 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import {VehicleService} from "./_services/vehicle.service";
-import {DealershipService} from "./_services/dealership.service";
 import {AuthenticationService} from "./_services/authentication.service";
 import {routing} from "./app.routes";
 import { VehiclesComponent } from './inventory/vehicles/vehicles.component';
+import {NavBarComponent} from "./_shared/navbar.component";
+import {Configuration} from "./app.configuration";
+import {DealerShipService} from "./_services/dealership.service";
+import {VehicleDetailsComponent} from "./inventory/vehicles/vehicle.details.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     InventoryComponent,
-    VehiclesComponent
+    VehiclesComponent,
+    NavBarComponent,
+    VehicleDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,8 +33,9 @@ import { VehiclesComponent } from './inventory/vehicles/vehicles.component';
   ],
   providers: [
     VehicleService,
-    DealershipService,
-    AuthenticationService
+    AuthenticationService,
+    Configuration,
+    DealerShipService
   ],
   bootstrap: [AppComponent]
 })

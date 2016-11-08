@@ -1,28 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import {VehicleService} from "../../_services/vehicle.service";
+import {Component, Input} from '@angular/core';
 import {Vehicle} from "../../_models/vehicle";
 
 @Component({
-  selector: 'app-vehicles',
+  selector: 'vehicle-list',
   templateUrl: './vehicles.component.html',
   styleUrls: ['./vehicles.component.css']
 })
-export class VehiclesComponent implements OnInit {
+export class VehiclesComponent {
 
-  vehicles:Vehicle[];
-  errorMessage: string;
-  constructor(private _vehicleService:VehicleService) { }
 
-  ngOnInit() {
+  @Input() vehicles: Vehicle[];
+  detailLoaded:boolean = false;
+  constructor() {
+
   }
 
-  onGetVehicles(dealerShipId:string){
-
-
-    this._vehicleService.getVehicles(dealerShipId).subscribe(v => {
-        this.vehicles = v
-      }, error => this.errorMessage = <any> error,
-      () => console.log("Done getting list of Vehicles"));
+  loadDetail(vehicle){
+    console.log(vehicle);
+    this.detailLoaded = true;
+    console.log(this.detailLoaded);
 
   }
 

@@ -1,39 +1,34 @@
-import { Injectable } from '@angular/core';
-import {Http, Response, URLSearchParams, Headers} from "@angular/http";
-import {Configuration} from "../app.configuration";
-import {Observable} from "rxjs";
-import {DealerShip} from "../_models/dealerShip";
+/**
+ * Created by micahcoletti on 11/2/16.
+ */
 
-@Injectable()
-export class DealerShipService {
+import {Inject} from "@angular/core";
+import {Observable} from "rxjs";
+import {Client} from "../_models/client";
+import {Response, URLSearchParams, Http, Headers} from "@angular/http";
+import {Configuration} from "../app.configuration";
+
+@Inject()
+export class ClientService{
 
   headers:Headers;
-  constructor(private _http:Http,private _config: Configuration) {
+  constructor(private _http:Http,private _config:Configuration){
     this.headers = new Headers();
     // this.headers.append('X-Authorization', 'Bearer ' + _authService.token);
     this.headers.append('Content-Type', 'application/json');
-
-
   }
 
-
-  /**
-   * Get list of Vehicles from the API
-   * @param dealerId the dealer id to filter for
-   * @returns {Observable<R>}
-   */
-  getDealerShips = (clientId: string): Observable<DealerShip[]> => {
+  getClient = (clientId:string): Observable<Client> => {
 
     let params: URLSearchParams = new URLSearchParams();
     params.set("clientId", clientId);
 
-    return this._http.get(this._config.apiBaseUrl + "/dealership/list", {
+    return this._http.get(this._config.apiBaseUrl + "/client", {
       search: params,
       headers: this.headers
     }).map(this.extractJsonData).catch(this.handleError);
 
   }
-
   /**
    * Extract the JSON result
    * @param res

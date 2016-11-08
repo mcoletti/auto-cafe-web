@@ -30,7 +30,7 @@ export class VehicleService {
     return this._http.get(this._config.apiBaseUrl + "/vehicle/list", {
       search: params,
       headers: this.headers
-    }).map(this.extractTextData).catch(this.handleError);
+    }).map(this.extractJsonData).catch(this.handleError);
 
   }
 

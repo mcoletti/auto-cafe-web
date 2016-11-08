@@ -6,5 +6,6 @@ export interface DealerShip {
   id: string;
   clientId: string;
   name: string;
+  headerTitle:string;
   contacts: Contact[];
 }

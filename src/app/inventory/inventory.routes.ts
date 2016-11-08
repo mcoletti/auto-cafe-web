@@ -16,7 +16,7 @@ export const inventoryRoutes :Routes = [
     component: InventoryComponent
   },
   {
-    path: 'vehicles',
-    component: VehiclesComponent
+    path: 'inventory/vehicles/:id',
+    component: InventoryComponent
   }
 ]

@@ -3,11 +3,13 @@
  */
 
 export interface Vehicle {
-  dealerShipId: string;
+  dealerId: string;
   stockNum: string;
+  shortDescription:string;
   vin: string;
   options: string;
   price: number;
+  priceFormatted: string;
   invoiceAmount: number;
   bodyStyle: string;
   extColor: string;
@@ -18,7 +20,7 @@ export interface Vehicle {
   year: number;
   trim: string;
   lotId: number;
-  logLocation: string;
+  lotLocation: string;
   imgUrl: string;
   createdUser: string;
   createdDtm: string;
