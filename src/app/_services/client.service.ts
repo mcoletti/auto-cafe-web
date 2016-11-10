@@ -2,13 +2,13 @@
  * Created by micahcoletti on 11/2/16.
  */
 
-import {Inject} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Client} from "../_models/client";
 import {Response, URLSearchParams, Http, Headers} from "@angular/http";
 import {Configuration} from "../app.configuration";
 
-@Inject()
+@Injectable()
 export class ClientService{
 
   headers:Headers;
@@ -18,6 +18,11 @@ export class ClientService{
     this.headers.append('Content-Type', 'application/json');
   }
 
+  /**
+   * Get a client by Id
+   * @param clientId the client Id
+   * @returns {Observable<R>}
+   */
   getClient = (clientId:string): Observable<Client> => {
 
     let params: URLSearchParams = new URLSearchParams();
@@ -27,6 +32,18 @@ export class ClientService{
       search: params,
       headers: this.headers
     }).map(this.extractJsonData).catch(this.handleError);
+
+  }
+  /**
+   * Get the List off All Clients
+   * @returns {Observable<R>}
+   */
+  getClients = (): Observable<Client[]> => {
+
+    return this._http.get(this._config.apiBaseUrl + "/client/list", {
+      headers: this.headers
+    }).map(this.extractJsonData).catch(this.handleError);
+
 
   }
   /**

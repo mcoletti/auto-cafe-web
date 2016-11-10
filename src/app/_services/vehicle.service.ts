@@ -34,6 +34,26 @@ export class VehicleService {
 
   }
 
+  getVehicle = (dealershipId: string,stockNum:string): Observable<Vehicle> => {
+
+    let params: URLSearchParams = new URLSearchParams();
+    params.set("dealershipId", dealershipId);
+    params.set("stockNum", stockNum);
+
+    return this._http.get(this._config.apiBaseUrl + "/vehicle", {
+      search: params,
+      headers: this.headers
+    }).map(this.extractJsonData).catch(this.handleError);
+
+  }
+
+  saveVehicle = (vehicle:Vehicle): Observable<string> => {
+    console.log("Saving Vehicle");
+    console.log(vehicle);
+    return this._http.post(this._config.apiBaseUrl + "/vehicle", JSON.stringify(vehicle), {headers: this.headers}).map(this.extractTextData).catch(this.handleError);
+
+  }
+
   /**
    * Extract the JSON result
    * @param res

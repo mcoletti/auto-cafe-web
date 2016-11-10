@@ -1,5 +1,8 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {AuthenticationService} from "../_services/authentication.service";
+import {ClientService} from "../_services/client.service";
+import {ActivatedRoute} from "@angular/router";
+import {Client} from "../_models/client";
 /**
  * Created by micahcoletti on 10/4/16.
  */
@@ -8,14 +11,14 @@ import {AuthenticationService} from "../_services/authentication.service";
   selector: 'navbar',
   templateUrl: 'navbar.component.html'
 })
-export class NavBarComponent {
+export class NavBarComponent{
+
 
   @Input() clientName: string;
-
-
   constructor() {
-    this.clientName = "Automatic Car Credit (ACC)";
+    // this.clientName = "Automatic Car Credit (ACC)";
   }
+
 
 // constructor(private _authService: AuthenticationService) {
   //

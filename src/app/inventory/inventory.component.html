@@ -1,22 +1,24 @@
-<div *ngIf="dealerShips" class="jumbotron">
-  <!--<div class="btn-group" role="group" aria-label="...">-->
-  <!--<button type="button" class="btn btn-default" *ngFor="let dealerShip of dealerShips; let index = index">-->
-  <!--{{ dealerShip.headerTitle }}-->
-  <!--</button>-->
-  <!--</div>-->
-  <div class="container-fluid">
-    <div class="row col-lg-8">
-      <h4>Locations:</h4>
+<div class="container-fluid">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>{{ client.name }} &nbsp;Dealership Locations:</h4>
     </div>
-    <div class="row col-lg-8">
-      <ul class="nav nav-pills">
-        <li role="presentation" *ngFor="let dealerShip of dealerShips; let index = index"><a style="cursor: pointer"
-                                                                                             (click)="getVehicles(dealerShip.id)">{{
-          dealerShip.headerTitle }}</a></li>
-      </ul>
-    </div>
-    <div class="row col-lg-8">
-      <vehicle-list [vehicles]="vehicles"></vehicle-list>
+
+    <div class="panel-body">
+      <div class="row col-lg-12">
+        click to view inventory
+      </div>
+      <div class="row col-lg-8">
+        <ul class="nav nav-pills">
+          <li role="presentation" *ngFor="let dealerShip of dealerShips; let index = index">
+            <a style="cursor: pointer" (click)="getVehicles(dealerShip.id)"><span class="fa fa-snowflake-o" aria-hidden="true"></span>&nbsp;{{ dealerShip.headerTitle }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="row col-lg-8">
+        <vehicle-list [vehicles]="vehicles"></vehicle-list>
+      </div>
     </div>
   </div>
 </div>

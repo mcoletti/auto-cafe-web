@@ -14,6 +14,10 @@ import {NavBarComponent} from "./_shared/navbar.component";
 import {Configuration} from "./app.configuration";
 import {DealerShipService} from "./_services/dealership.service";
 import {VehicleDetailsComponent} from "./inventory/vehicles/vehicle.details.component";
+import { ClientComponent } from './client/client.component';
+import {ClientService} from "./_services/client.service";
+import { ClientDetailComponent } from './client/client-detail/client-detail.component';
+import { VehicleViewComponent } from './inventory/vehicles/vehicle-view/vehicle-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import {VehicleDetailsComponent} from "./inventory/vehicles/vehicle.details.comp
     InventoryComponent,
     VehiclesComponent,
     NavBarComponent,
-    VehicleDetailsComponent
+    VehicleDetailsComponent,
+    ClientComponent,
+    ClientDetailComponent,
+    VehicleViewComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,8 @@ import {VehicleDetailsComponent} from "./inventory/vehicles/vehicle.details.comp
     VehicleService,
     AuthenticationService,
     Configuration,
-    DealerShipService
+    DealerShipService,
+    ClientService
   ],
   bootstrap: [AppComponent]
 })

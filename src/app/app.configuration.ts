@@ -4,7 +4,7 @@
 
 export class Configuration{
   v1Url:string = "/v1"
-  apiBaseUrl:string = "http://localhost:8080/api" + this.v1Url
+  apiBaseUrl:string = "http://localhost:8081/api" + this.v1Url
 
 
 }

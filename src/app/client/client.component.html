@@ -1,0 +1,74 @@
+<div class="main-container container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <!--<div class="row col-lg-12">-->
+      <!--<div class="col-md-3">-->
+      <!--<strong>Clients</strong>-->
+      <!--</div>-->
+      <!--<div class="col-sm-6">-->
+      <!--<a class="btn btn-primary" role="button" (click)="locDetails.open()">-->
+      <!--<i class="fa fa-pencil-square-o" aria-hidden="true"></i><label class="label">Add New</label></a>-->
+      <!--</div>-->
+      <!--</div>-->
+      <strong>Clients</strong>&nbsp;&nbsp;
+      <button class="btn btn-primary btn-sm" (click)="newCLient.open()"><i class="fa fa-pencil-square-o"
+                                                                           aria-hidden="true"></i>&nbsp;Add New
+      </button>
+
+      <modal #newCLient submitButtonLabel="Save" (onSubmit)="onSave(client)">
+        <modal-header>
+          <h4><strong>Add New Client</strong></h4>
+        </modal-header>
+        <modal-content>
+          <client-detail [client]="client"></client-detail>
+        </modal-content>
+        <modal-footer>
+          <button class="btn btn-primary" (click)="newCLient.close()">Close</button>
+        </modal-footer>
+      </modal>
+    </div>
+    <div class="panel-body">
+      <table *ngIf="clients" class="table table-striped table-hover">
+        <thead>
+        <th></th>
+        <th></th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let client of clients; let index = index">
+
+          <td>
+            <div class="col-sm-12">
+              <div class="col-sm-4 text-center" style="padding-top: 10px">
+                <strong>{{ client.name }}</strong>
+              </div>
+              <div class="col-sm-4">
+                <button class="btn btn-warning btn-sm" role="button" (click)="clientDetail.open()" style="cursor: pointer"><i
+                  class="fa fa-pencil-square-o"
+                  aria-hidden="true"></i>&nbsp;Client Details</button>
+              </div>
+            </div>
+
+
+          </td>
+          <td>
+            <div class="col-sm-3">
+              <modal #clientDetail class="modal-lg">
+                <modal-header>
+                  <h4><strong>Client Details:</strong></h4>
+                </modal-header>
+                <modal-content>
+                  <client-detail [client]="client"></client-detail>
+                </modal-content>
+                <modal-footer>
+                  <button class="btn btn-primary" (click)="clientDetail.close()">Close</button>
+                </modal-footer>
+              </modal>
+            </div>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

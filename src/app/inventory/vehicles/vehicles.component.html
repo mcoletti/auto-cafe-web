@@ -1,67 +1,97 @@
 <div class="main-container container-fluid">
+  <div *ngIf="vehicles && !detailLoaded" class="panel panel-default">
+    <div class="panel-heading">
+      Vehicle Inventory List
+      <div *ngIf="successMessage" class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+        {{ successMessage }}
+      </div>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped table-hover">
+        <thead>
+        <th></th>
+        <th></th>
+        <th></th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let v of vehicles; let index = index">
+          <td>
+            <div *ngIf="showEdit">
+              <button class="btn btn-warning btn-sm" (click)="editVehicle.open()">
+                <i class="fa fa-pencil-square-o fa-sm" aria-hidden="true"></i></button>
+              <modal #editVehicle class="modal-lg" submitButtonLabel="Save" (onSubmit)="onSaveVehicle(v)">
+                <modal-header>
+                  <h4><strong>Edit Vehicle Information</strong></h4>
+                </modal-header>
+                <modal-content>
+                  <vehicle-detail [vehicle]="v"></vehicle-detail>
+                </modal-content>
+                <modal-footer>
+                  <button class="btn btn-primary" (click)="editVehicle.close()">Close</button>
+                </modal-footer>
+              </modal>
+            </div>
+          </td>
+          <td>
+            <div class="row col-md-12">
+              <div class="col-md-4">
+                <img (click)="showDetail.open()" class="img-thumbnail" src="../../../inventory_images/{{ v.imgUrl }}"
+                     style="cursor: pointer">
+              </div>
+              <div class="col-md-4">
+                <div class="row">
+                  <b>{{ v.shortDescription }}</b>
+                </div>
+                <div class="row">
+                  Stock Num: {{ v.stockNum }}
+                </div>
+                <div class="row">
+                  Ext Color: {{ v.extColor }}
+                </div>
+                <div class="row">
+                  Miles: {{ v.mileage }}
+                </div>
+                <div class="row">
+                  Miles: {{ v.stockNum }}
+                </div>
+                <div class="row">
+                  Trim: {{ v.trim }}
+                </div>
+                <div class="row">
+                  Body Style: {{ v.bodyStyle }}
+                </div>
+                <div class="row">
+                  Int Color: {{ v.intColor }}
+                </div>
+                <div class="row">
+                  <br/>
+                  <b>{{ v.lotLocation }}</b>
+                </div>
+              </div>
+              <div class="col-md-4" style="padding-top: 50px">
+                <b>Asking Price: {{ v.priceFormatted }}</b>
+              </div>
+            </div>
+          </td>
+          <td>
+            <modal #showDetail modalClass="modal-lg">
+              <modal-header>
+                {{ v.shortDescription }}
+              </modal-header>
+              <modal-content>
+                <vehicle-view [vehicle]="v"></vehicle-view>
+              </modal-content>
+              <modal-footer>
+                <button class="btn btn-primary" (click)="showDetail.close()">Close</button>
+              </modal-footer>
+            </modal>
 
-  <table *ngIf="vehicles && !detailLoaded" class="table table-striped table-hover">
-    <thead>
-    <th></th>
-    <th></th>
-    </thead>
-    <tbody>
-    <tr *ngFor="let v of vehicles; let index = index">
-      <td>
-        <div class="row col-md-12">
-          <div class="col-md-4">
-            <img (click)="showDetail.open()" class="img-thumbnail" src="../../../inventory_images/acc1.jpg" style="cursor: pointer">
-          </div>
-          <div class="col-md-4">
-            <div class="row">
-              <b>{{ v.shortDescription }}</b>
-            </div>
-            <div class="row">
-              Stock Num: {{ v.stockNum }}
-            </div>
-            <div class="row">
-              Ext Color: {{ v.extColor }}
-            </div>
-            <div class="row">
-              Miles: {{ v.mileage }}
-            </div>
-            <div class="row">
-              Miles: {{ v.stockNum }}
-            </div>
-            <div class="row">
-              Trim: {{ v.trim }}
-            </div>
-            <div class="row">
-              Body Style: {{ v.bodyStyle }}
-            </div>
-            <div class="row">
-              Int Color: {{ v.intColor }}
-            </div>
-            <div class="row">
-              <br/>
-              <b>{{ v.lotLocation }}</b>
-            </div>
-          </div>
-          <div class="col-md-4" style="padding-top: 50px">
-            <b>Asking Price: {{ v.priceFormatted }}</b>
-          </div>
-        </div>
-      </td>
-      <td>
-        <modal #showDetail modalClass="modal-lg">
-          <modal-header>
-            {{ v.shortDescription }}
-          </modal-header>
-          <modal-content>
-            <vehicle-detail [vehicle]="v"></vehicle-detail>
-          </modal-content>
-          <modal-footer>
-            <button class="btn btn-primary" (click)="showDetail.close()">Close</button>
-          </modal-footer>
-        </modal>
-
-      </td>
-    </tr>
-    </tbody>
-  </table>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

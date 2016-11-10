@@ -1,0 +1,95 @@
+<form *ngIf="client" class="form-horizontal" #f="ngForm">
+  <div class="form-group-sm">
+    <label for="clientName" class="col-sm-3 control-label" style="text-align: left">Client
+      Name:</label>
+    <div class="col-sm-9 col-sm-pull-1">
+      <input type="text" class="form-control" id="clientName"
+             placeholder="Location Name"
+             [(ngModel)]="client.name" name="clientName">
+    </div>
+  </div>
+  <div class="form-group-sm">
+    <div class="col-sm-12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+  </div>
+  <div class="form-group-sm">
+    <div class="col-sm-12"><strong>Location Details:</strong></div>
+  </div>
+  <div class="form-group-sm">
+    <div class="col-sm-12">-------------------------</div>
+  </div>
+  <div class="form-group-sm">
+    <label for="locName" class="col-sm-3 control-label" style="text-align: left">Location
+      Name:</label>
+    <div class="col-sm-9 col-sm-pull-1">
+      <input type="text" class="form-control" id="locName"
+             placeholder="Location Name"
+             [(ngModel)]="client.locationDetails.name" name="locName">
+    </div>
+  </div>
+  <div class="form-group-sm">
+    <div class="col-sm-12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+  </div>
+  <div class="form-group-sm">
+    <div class="col-sm-12"><strong>Address:</strong></div>
+  </div>
+  <div class="form-group-sm">
+    <div class="col-sm-12">-------------------------</div>
+  </div>
+  <div class="form-group-sm">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="street1" class="control-label" style="text-align: left">Street1:</label>
+        </div>
+        <div class="col-sm-6">
+          <label for="street2" class="control-label" style="text-align: left">Street2:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="street1"
+                 placeholder="Location Name"
+                 [(ngModel)]="client.locationDetails.address.street1" name="street1">
+        </div>
+
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="street2"
+                 placeholder="Street2"
+                 [(ngModel)]="client.locationDetails.address.street2" name="street2">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group-sm">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="city" class="control-label" style="text-align: left">City:</label>
+        </div>
+        <div class="col-sm-2">
+          <label for="state" class="control-label" style="text-align: left">State:</label>
+        </div>
+        <div class="col-sm-4">
+          <label for="zip" class="control-label" style="text-align: left">Zip:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="city"
+                 placeholder="Enter City"
+                 [(ngModel)]="client.locationDetails.address.city" name="city">
+        </div>
+        <div class="col-sm-2">
+          <input type="text" class="form-control" id="state"
+                 placeholder="Enter State"
+                 [(ngModel)]="client.locationDetails.address.state" name="state">
+        </div>
+        <div class="col-sm-4">
+          <input type="number" class="form-control" id="zip"
+                 placeholder="Enter Zip"
+                 [(ngModel)]="client.locationDetails.address.zipCode" name="zip">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
