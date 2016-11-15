@@ -1,23 +1,38 @@
 <div class="container-fluid">
 
   <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>{{ client.name }} &nbsp;Dealership Locations:</h4>
+    <div class="panel-heading text-center">
+      <h3>{{ client.name }}</h3>
     </div>
 
     <div class="panel-body">
-      <div class="row col-lg-12">
-        click to view inventory
+      <!--<div class="row col-lg-12">-->
+        <!--click to view inventory-->
+      <!--</div>-->
+      <!--<div class="row col-lg-8">-->
+        <!--<ul class="nav nav-pills">-->
+          <!--<li role="presentation" *ngFor="let dealerShip of dealerShips; let index = index">-->
+            <!--<a style="cursor: pointer" (click)="getVehicles(dealerShip.id)"><span class="fa fa-snowflake-o" aria-hidden="true"></span>&nbsp;{{ dealerShip.headerTitle }}</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+      <div class="row">
+        <div class="col-lg-8">
+          <dealer-selector [dealerShips]="dealerShips" (click)="getVehicles($event)"></dealer-selector>
+        </div>
+
+
+        <!--<select [(ngModel)]="selectedDealerShipName"  (change)="dealerShipChange($event.target.value)">-->
+
+          <!--<option *ngFor="let dealerShip of dealerShips" [value]="dealerShip.id">{{ dealerShip.name }}</option>-->
+          <!--<option selected="selected" [value]="99">- Select -</option>-->
+        <!--</select>-->
       </div>
-      <div class="row col-lg-8">
-        <ul class="nav nav-pills">
-          <li role="presentation" *ngFor="let dealerShip of dealerShips; let index = index">
-            <a style="cursor: pointer" (click)="getVehicles(dealerShip.id)"><span class="fa fa-snowflake-o" aria-hidden="true"></span>&nbsp;{{ dealerShip.headerTitle }}</a>
-          </li>
-        </ul>
-      </div>
-      <div class="row col-lg-8">
-        <vehicle-list [vehicles]="vehicles"></vehicle-list>
+      <div class="row" style="padding-top: 10px">
+        <div class="col-lg-8">
+          <vehicle-list [vehicles]="vehicles"></vehicle-list>
+        </div>
+
       </div>
     </div>
   </div>

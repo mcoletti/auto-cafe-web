@@ -1,4 +1,3 @@
-<div class="main-container container-fluid">
   <div *ngIf="vehicles && !detailLoaded" class="panel panel-default">
     <div class="panel-heading">
       Vehicle Inventory List
@@ -19,7 +18,7 @@
         <tr *ngFor="let v of vehicles; let index = index">
           <td>
             <div *ngIf="showEdit">
-              <button class="btn btn-warning btn-sm" (click)="editVehicle.open()">
+              <button class="btn btn-info btn-sm" (click)="editVehicle.open()">
                 <i class="fa fa-pencil-square-o fa-sm" aria-hidden="true"></i></button>
               <modal #editVehicle class="modal-lg" submitButtonLabel="Save" (onSubmit)="onSaveVehicle(v)">
                 <modal-header>
@@ -94,4 +93,3 @@
       </table>
     </div>
   </div>
-</div>

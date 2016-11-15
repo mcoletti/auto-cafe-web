@@ -14,18 +14,22 @@ import {Client} from "../_models/client";
 })
 export class InventoryComponent implements OnInit {
   dealerShips: DealerShip[];
+  dealerShip: DealerShip;
+  dealerShipId:string;
+  selectedDealerShipName: string;
   errorMessage: string;
   vehicles: Vehicle[];
   sub: any;
-  dealerShipId: string;
   clientId: string;
-  client:Client;
-  constructor(private route: ActivatedRoute,private _dealerShipService: DealerShipService,private _vehicleService: VehicleService,private _clientService:ClientService) {
+  client: Client;
+  isAdmin: boolean;
+
+  constructor(private route: ActivatedRoute, private _dealerShipService: DealerShipService, private _vehicleService: VehicleService, private _clientService: ClientService) {
 
 
-      this.client = <Client>{name:''}
-      this.clientId = "ad92e832-9830-49a5-98b5-9f9365fd20bd";
-
+    this.client = <Client>{name: ''}
+    this.clientId = "ad92e832-9830-49a5-98b5-9f9365fd20bd";
+    this.isAdmin = true;
     // this._dealerShipService.getDealerShips("ad92e832-9830-49a5-98b5-9f9365fd20bd").subscribe(v => {
     //     this.dealerShips = v
     //   }, error => this.errorMessage = <any> error,
@@ -36,19 +40,19 @@ export class InventoryComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
-        this.clientId = params["clientId"];
+      this.clientId = params["clientId"];
     });
 
-    console.log("ClientId: " + this.clientId);
     this._dealerShipService.getDealerShips(this.clientId).subscribe(v => {
         this.dealerShips = v
       }, error => this.errorMessage = <any> error,
-      () => console.log(this.dealerShips));
+      () => console.log("Get The list of DealerShips"));
 
     this._clientService.getClient(this.clientId).subscribe(v => {
         this.client = v
       }, error => this.errorMessage = <any> error,
-      () => console.log(this.client));
+      () => console.log("Got the Client Data"));
+
 
     //
     // if(this.dealerShipId != null){
@@ -57,18 +61,33 @@ export class InventoryComponent implements OnInit {
 
 
   }
+
   // ngOnDestroy() {
   //   this.sub.unsubscribe();
   // }
 
   getVehicles(dealerShipId: string) {
 
-    console.log("Getting vehicles for DealerId " + dealerShipId);
-    this._vehicleService.getVehicles(dealerShipId).subscribe(v => {
-        this.vehicles = v
-      }, error => this.errorMessage = <any> error,
-      () => console.log("Done"));
+    if(typeof dealerShipId == "string"){
+      console.log("Getting vehicles for DealerId " + dealerShipId);
+      this._vehicleService.getVehicles(dealerShipId).subscribe(v => {
+          this.vehicles = v
+        }, error => this.errorMessage = <any> error,
+        () => console.log("Done"));
+    }
 
+
+
+  }
+
+  dealerShipChange(dealerShipId) {
+
+    console.log(dealerShipId);
+    this.dealerShipId = dealerShipId;
+    // if (dealerShipId != 99) {
+    //   console.log(dealerShipId)
+    //   this.getVehicles(dealerShipId);
+    // }
   }
 
 

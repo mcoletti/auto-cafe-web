@@ -15,6 +15,7 @@ export class NavBarComponent{
 
 
   @Input() clientName: string;
+  @Input() isAdmin:boolean;
   constructor() {
     // this.clientName = "Automatic Car Credit (ACC)";
   }

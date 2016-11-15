@@ -18,6 +18,7 @@ import { ClientComponent } from './client/client.component';
 import {ClientService} from "./_services/client.service";
 import { ClientDetailComponent } from './client/client-detail/client-detail.component';
 import { VehicleViewComponent } from './inventory/vehicles/vehicle-view/vehicle-view.component';
+import { DealerSelectorComponent } from './inventory/vehicles/_components/dealer-selector/dealer-selector.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { VehicleViewComponent } from './inventory/vehicles/vehicle-view/vehicle-
     VehicleDetailsComponent,
     ClientComponent,
     ClientDetailComponent,
-    VehicleViewComponent
+    VehicleViewComponent,
+    DealerSelectorComponent
   ],
   imports: [
     BrowserModule,

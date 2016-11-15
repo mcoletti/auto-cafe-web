@@ -3,15 +3,15 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">-->
-        <!--<span class="sr-only">Toggle navigation</span>-->
-        <!--<span class="icon-bar"></span>-->
-        <!--<span class="icon-bar"></span>-->
-        <!--<span class="icon-bar"></span>-->
+      <!--<span class="sr-only">Toggle navigation</span>-->
+      <!--<span class="icon-bar"></span>-->
+      <!--<span class="icon-bar"></span>-->
+      <!--<span class="icon-bar"></span>-->
       <!--</button>-->
       <!--&lt;!&ndash;<a class="navbar-brand" href="#">Brand</a>&ndash;&gt;-->
     </div>
     <div class="navbar-text navbar-right" style="padding-right: 10px">
-      <h4><span class="label label-default">{{ clientName }}</span></h4>
+      <h4><span class="label label-default">Advanced Automotive Cafe</span></h4>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse-2">
@@ -22,12 +22,13 @@
         <!--<li><a href="#">Works</a></li>-->
         <!--<li><a href="#">News</a></li>-->
 
-        <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin Tools <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-        <li><a [routerLink]="['client']">Clients</a></li>
-        <!--<li><a [routerLink]="['users']">Manage Users</a></li>-->
-        </ul>
+        <li *ngIf="isAdmin" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin Tools <span
+            class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a [routerLink]="['client']">Clients</a></li>
+            <!--<li><a [routerLink]="['users']">Manage Users</a></li>-->
+          </ul>
         </li>
         <!--<li><a [routerLink]="['users']">Manage Users</a></li>-->
       </ul>

@@ -13,12 +13,14 @@ export class AppComponent implements OnInit{
   title = 'app works!';
 
   clientName:string;
+  isAdmin:boolean;
   // sub: any;
   // clientId: string;
   // client:Client;
   // errorMessage:string;
   constructor() {
     // this.clientName = "Automatic Car Credit (ACC)";
+    this.isAdmin = true;
   }
 
   ngOnInit(): void {
