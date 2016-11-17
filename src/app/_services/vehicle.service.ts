@@ -3,6 +3,7 @@ import {Http, Response, URLSearchParams, Headers} from "@angular/http";
 import {Configuration} from "../app.configuration";
 import {Observable} from "rxjs";
 import {Vehicle} from "../_models/vehicle";
+import {UrlSegment} from "@angular/router";
 
 @Injectable()
 export class VehicleService {
@@ -37,12 +38,24 @@ export class VehicleService {
   getVehicle = (dealershipId: string,stockNum:string): Observable<Vehicle> => {
 
     let params: URLSearchParams = new URLSearchParams();
+
     params.set("dealershipId", dealershipId);
     params.set("stockNum", stockNum);
 
     return this._http.get(this._config.apiBaseUrl + "/vehicle", {
       search: params,
       headers: this.headers
+    }).map(this.extractJsonData).catch(this.handleError);
+
+  }
+  /**
+   * Get the Vehicle by Vin number
+   * @param vin
+   * @returns {Observable<R>}
+   */
+  getVehicleByVin = (vin:string): Observable<Vehicle> => {
+
+    return this._http.get(this._config.apiBaseUrl + "/vehicle/" + vin, {headers: this.headers
     }).map(this.extractJsonData).catch(this.handleError);
 
   }

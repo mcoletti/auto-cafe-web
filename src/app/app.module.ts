@@ -13,11 +13,11 @@ import { VehiclesComponent } from './inventory/vehicles/vehicles.component';
 import {NavBarComponent} from "./_shared/navbar.component";
 import {Configuration} from "./app.configuration";
 import {DealerShipService} from "./_services/dealership.service";
-import {VehicleDetailsComponent} from "./inventory/vehicles/vehicle.details.component";
+import {VehicleDetailsComponent} from "./inventory/vehicles/_components/vehicle-details/vehicle.details.component";
 import { ClientComponent } from './client/client.component';
 import {ClientService} from "./_services/client.service";
 import { ClientDetailComponent } from './client/client-detail/client-detail.component';
-import { VehicleViewComponent } from './inventory/vehicles/vehicle-view/vehicle-view.component';
+import { VehicleViewComponent } from './inventory/vehicles/_components/vehicle-view/vehicle-view.component';
 import { DealerSelectorComponent } from './inventory/vehicles/_components/dealer-selector/dealer-selector.component';
 
 @NgModule({

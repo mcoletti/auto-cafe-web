@@ -35,11 +35,11 @@
           </td>
           <td>
             <div class="row col-md-12">
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <img (click)="showDetail.open()" class="img-thumbnail" src="../../../inventory_images/{{ v.imgUrl }}"
                      style="cursor: pointer">
               </div>
-              <div class="col-md-4">
+              <div class="col-md-5">
                 <div class="row">
                   <b>{{ v.shortDescription }}</b>
                 </div>
@@ -47,14 +47,18 @@
                   Stock Num: {{ v.stockNum }}
                 </div>
                 <div class="row">
+                  VIN: {{ v.vin }}
+                </div>
+                <div class="row">
                   Ext Color: {{ v.extColor }}
+                </div>
+                <div class="row">
+                  Int Color: {{ v.intColor }}
                 </div>
                 <div class="row">
                   Miles: {{ v.mileage }}
                 </div>
-                <div class="row">
-                  Miles: {{ v.stockNum }}
-                </div>
+
                 <div class="row">
                   Trim: {{ v.trim }}
                 </div>
@@ -62,11 +66,8 @@
                   Body Style: {{ v.bodyStyle }}
                 </div>
                 <div class="row">
-                  Int Color: {{ v.intColor }}
-                </div>
-                <div class="row">
                   <br/>
-                  <b>{{ v.lotLocation }}</b>
+                  <b>Lot:&nbsp;{{ v.lotLocation }}</b>
                 </div>
               </div>
               <div class="col-md-4" style="padding-top: 50px">
