@@ -1,10 +1,10 @@
 <div class="dropdown">
   <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenu1" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="true">
-    View Vehicle Inventory by Location
-    <span class="caret"></span>
+    View Vehicle Inventory by Location&nbsp;
+    <span class="fa fa-caret-square-o-down fa-lg"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li *ngFor="let dealer of dealerShips" (click)="click.emit(dealer.id)"><a><span class="fa fa-car" aria-hidden="true"></span> &nbsp;{{ dealer.name }}</a></li>
+    <li #lstDealerShips *ngFor="let dealer of dealerShips" (click)="click.emit(dealer)"><a><span class="fa fa-car fa-fw" aria-hidden="true"></span> &nbsp;{{ dealer.name }}</a></li>
   </ul>
 </div>

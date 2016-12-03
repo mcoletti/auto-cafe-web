@@ -1,39 +1,143 @@
-<div class="container-fluid">
-  <form *ngIf="vehicle" class="form-horizontal" #f="ngForm">
+<div class="container-fluid" style="width: 50em">
+  <form *ngIf="vehicle" class="form-horizontal col-lg-12" #f="ngForm">
     <div class="form-group-sm">
       <div class="row">
-        <div class="col-lg-4">
-          <label for="shortDescription" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Short Description:</label>
+        <div class="col-sm-3">
+          <label for="lotId" class="control-label" style="text-align: left"><i
+            class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;LotId:</label>
         </div>
-        <div class="col-lg-8">
-          <label for="stockNum" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Stock Num:</label>
+        <div class="col-sm-7">
+          <label for="lotLocation" class="control-label" style="text-align: left"><i
+            class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Lot Location:</label>
         </div>
       </div>
     </div>
     <div class="form-group-sm">
       <div class="row">
-        <div class="input-group-sm col-lg-4">
-
-
-          <textarea class="form-control" id="shortDescription" name="shortDescription" [(ngModel)]="vehicle.shortDescription"></textarea>
-          <!--<input type="text" class="form-control" id="shortDescription"-->
-                 <!--placeholder="Location Name"-->
-                 <!--[(ngModel)]="vehicle.shortDescription" name="shortDescription">-->
-        </div>
-        <div class="input-group-sm col-lg-8">
-          <input type="text" class="form-control" id="stockNum"
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="lotId"
                  placeholder="Location Name"
-                 [(ngModel)]="vehicle.stockNum" name="stockNum">
+                 [(ngModel)]="vehicle.lotId" name="lotId">
+        </div>
+        <div class="col-sm-7">
+          <input type="text" class="form-control" id="lotLocation"
+                 placeholder="Location Name"
+                 [(ngModel)]="vehicle.lotLocation" name="lotLocation">
+        </div>
+      </div>
+    </div>
+    <div class="form-group-sm">
+      <div class="row">
+        <div class="col-lg-8">
+          <label for="shortDescription" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o"
+                                                                                          aria-hidden="true"></i>&nbsp;Short
+            Description:</label>
+        </div>
+      </div> <!-- end row2 -->
+    </div> <!-- end form group2 -->
+    <div class="form-group-sm">
+      <div class="row">
+        <div class="input-group-sm col-lg-8">
+
+
+          <textarea class="form-control" id="shortDescription" name="shortDescription"
+                    [(ngModel)]="vehicle.shortDescription" cols="7"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="form-group-sm">
+      <div class="row">
+        <div class="col-lg-12">
+          <label for="options" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o"
+                                                                                 aria-hidden="true"></i>&nbsp;Options:</label>
+        </div>
+      </div> <!-- end row2 -->
+    </div> <!-- end form group2 -->
+    <div class="form-group-sm">
+      <div class="row">
+        <div class="input-group-sm col-lg-12">
+
+
+          <textarea class="form-control" id="options" name="options"
+                    [(ngModel)]="vehicle.options" cols="50" rows="15"></textarea>
         </div>
       </div>
     </div>
     <div class="form-group-sm">
       <div class="row">
         <div class="col-sm-5">
-          <label for="vin" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Vin Number:</label>
+          <label for="imgUrl" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o"
+                                                                                aria-hidden="true"></i>&nbsp;Thumbnail
+            Image:</label>
+        </div>
+
+      </div>
+    </div>
+    <div class="form-group-sm">
+      <div class="row">
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="imgUrl"
+                 placeholder="Location Name"
+                 [(ngModel)]="vehicle.imgUrl" name="imgUrl">
+        </div>
+        <div class="col-sm-6 col-sm-push-1">
+          <a class="btn btn-primary btn-sm" (click)="editImage.open()"><i class="fa fa-file-image-o"
+                                                                          aria-hidden="true"></i>&nbsp;Edit Image</a>
+          <modal #editImage class="modal-lg" submitButtonLabel="Save">
+            <modal-header>
+              Edit Image
+            </modal-header>
+            <modal-content>
+              <div class="container-fluid">
+                <div class="row col-lg-12">
+                  <img class="img-responsive" src="../../../inventory_images/{{ vehicle.imgUrl }}">
+                </div>
+                <div class="row col-lg-8">
+                  <p>&nbsp;</p>
+                </div>
+                <div class="row col-lg-8">
+                  <input type="file" (change)="onFileChange(input.value)" #input/>
+                </div>
+                <div class="row col-lg-12">
+                  <div class="form-group-sm">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <label for="newFile" class="control-label" style="text-align: left">
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Image File Name:</label></div>
+                    </div>
+                  </div>
+                  <div class="form-group-sm">
+                    <div class="row">
+                      <div class="col-lg-3">
+
+                        <input type="text" class="form-control" id="newFile"
+                               placeholder="Location Name"
+                               [(ngModel)]="vehicle.imgUrl" name="newFile"></div>
+                    </div>
+                    <div class="row">
+                      <image-upload></image-upload>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </modal-content>
+            <modal-footer>
+              <button class="btn btn-primary" (click)="editImage.close()">Close</button>
+            </modal-footer>
+          </modal>
+        </div>
+      </div>
+    </div>
+    <div class="form-group-sm">
+      <div class="row">
+        <div class="col-sm-5">
+          <label for="vin" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o"
+                                                                             aria-hidden="true"></i>&nbsp;Vin
+            Number:</label>
         </div>
         <div class="col-sm-7">
-          <label for="mileage" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Miles:</label>
+          <label for="mileage" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o"
+                                                                                 aria-hidden="true"></i>&nbsp;Miles:</label>
         </div>
       </div>
     </div>
@@ -54,10 +158,14 @@
     <div class="form-group-sm">
       <div class="row">
         <div class="col-sm-5">
-          <label for="intColor" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Interior Color:</label>
+          <label for="intColor" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o"
+                                                                                  aria-hidden="true"></i>&nbsp;Interior
+            Color:</label>
         </div>
         <div class="col-sm-7">
-          <label for="extColor" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Exterior Color:</label>
+          <label for="extColor" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o"
+                                                                                  aria-hidden="true"></i>&nbsp;Exterior
+            Color:</label>
         </div>
       </div>
     </div>
@@ -75,6 +183,69 @@
         </div>
       </div>
     </div>
+    <div class="form-group-sm">
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="make" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o"
+                                                                              aria-hidden="true"></i>&nbsp;Make:</label>
+        </div>
+        <div class="col-sm-4">
+          <label for="model" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o"
+                                                                               aria-hidden="true"></i>&nbsp;Model:</label>
+        </div>
+        <div class="col-sm-4">
+          <label for="year" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o"
+                                                                              aria-hidden="true"></i>&nbsp;Year:</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group-sm">
+      <div class="row">
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="make"
+                 placeholder="Location Name"
+                 [(ngModel)]="vehicle.make" name="make">
+        </div>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="model"
+                 placeholder="Location Name"
+                 [(ngModel)]="vehicle.model" name="model">
+        </div>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="year"
+                 placeholder="Location Name"
+                 [(ngModel)]="vehicle.year" name="year">
+        </div>
+      </div>
+    </div>
+    <div class="form-group-sm">
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="invoiceAmount" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o"
+                                                                                       aria-hidden="true"></i>&nbsp;Invoice
+            Cost:</label>
+        </div>
+        <div class="col-sm-4">
+          <label for="price" class="control-label" style="text-align: left"><i class="fa fa-pencil-square-o"
+                                                                               aria-hidden="true"></i>&nbsp;Current Sale
+            Price:</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group-sm">
+      <div class="row">
+        <div class="col-sm-4">
+          <input currency-directive type="text" class="form-control" id="invoiceAmount"
+                 placeholder="Invoiced Amount"
+                 [(ngModel)]="vehicle.invoiceAmount" name="invoiceAmount">
+        </div>
+        <div class="col-sm-4">
+          <input currency-directive type="text" class="form-control" id="price"
+                 placeholder="Vehicle Price"
+                 [(ngModel)]="vehicle.price" name="price">
+
+        </div>
+      </div>
+    </div>
   </form>
-  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">{{ errorMessage }}</div>
 </div>

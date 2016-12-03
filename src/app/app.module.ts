@@ -19,6 +19,12 @@ import {ClientService} from "./_services/client.service";
 import { ClientDetailComponent } from './client/client-detail/client-detail.component';
 import { VehicleViewComponent } from './inventory/vehicles/_components/vehicle-view/vehicle-view.component';
 import { DealerSelectorComponent } from './inventory/vehicles/_components/dealer-selector/dealer-selector.component';
+import {DataTableDirectives} from "angular2-datatable2/datatable";
+import {CustomCurrencyPipe} from "./_directives/custom-currency-pipe";
+import {CurrencyDirective} from "./_directives/currency-directive";
+import {SpinnerComponent} from "./_shared/spinner.component";
+import {FileUploader, FileUploadModule,} from "ng2-file-upload";
+import {ImageUploadComponent} from "./inventory/vehicles/_components/image-upload/image-upload.component";
 
 @NgModule({
   declarations: [
@@ -31,21 +37,29 @@ import { DealerSelectorComponent } from './inventory/vehicles/_components/dealer
     ClientComponent,
     ClientDetailComponent,
     VehicleViewComponent,
-    DealerSelectorComponent
+    DealerSelectorComponent,
+    DataTableDirectives,
+    CurrencyDirective,
+    SpinnerComponent,
+    ImageUploadComponent
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     ModalModule,
-    routing
+    routing,
+    FileUploadModule
+
   ],
   providers: [
     VehicleService,
     AuthenticationService,
     Configuration,
     DealerShipService,
-    ClientService
+    ClientService,
+    CustomCurrencyPipe
   ],
   bootstrap: [AppComponent]
 })

@@ -9,10 +9,11 @@ import {Response, URLSearchParams, Http, Headers} from "@angular/http";
 import {Configuration} from "../app.configuration";
 
 @Injectable()
-export class ClientService{
+export class ClientService {
 
-  headers:Headers;
-  constructor(private _http:Http,private _config:Configuration){
+  headers: Headers;
+
+  constructor(private _http: Http, private _config: Configuration) {
     this.headers = new Headers();
     // this.headers.append('X-Authorization', 'Bearer ' + _authService.token);
     this.headers.append('Content-Type', 'application/json');
@@ -23,7 +24,8 @@ export class ClientService{
    * @param clientId the client Id
    * @returns {Observable<R>}
    */
-  getClient = (clientId:string): Observable<Client> => {
+  getClient = (clientId: string): Observable<Client> => {
+
 
     let params: URLSearchParams = new URLSearchParams();
     params.set("clientId", clientId);
@@ -32,6 +34,7 @@ export class ClientService{
       search: params,
       headers: this.headers
     }).map(this.extractJsonData).catch(this.handleError);
+
 
   }
   /**
@@ -46,6 +49,7 @@ export class ClientService{
 
 
   }
+
   /**
    * Extract the JSON result
    * @param res
@@ -65,9 +69,13 @@ export class ClientService{
    * @returns {ErrorObservable}
    */
   private handleError(errorResponse: Response) {
-    console.error(errorResponse);
     console.log(errorResponse.statusText);
+    console.log(errorResponse);
     return Observable.throw(errorResponse.statusText || "Error");
   }
+
+
+
+
 
 }

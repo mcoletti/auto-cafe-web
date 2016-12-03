@@ -61,9 +61,7 @@ export class VehicleService {
   }
 
   saveVehicle = (vehicle:Vehicle): Observable<string> => {
-    console.log("Saving Vehicle");
-    console.log(vehicle);
-    return this._http.post(this._config.apiBaseUrl + "/vehicle", JSON.stringify(vehicle), {headers: this.headers}).map(this.extractTextData).catch(this.handleError);
+    return this._http.put(this._config.apiBaseUrl + "/vehicle", JSON.stringify(vehicle), {headers: this.headers}).map(this.extractTextData).catch(this.handleError);
 
   }
 

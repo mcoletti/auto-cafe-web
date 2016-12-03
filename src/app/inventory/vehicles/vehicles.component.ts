@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Vehicle} from "../../_models/vehicle";
 import {VehicleService} from "../../_services/vehicle.service";
 import {ActivatedRoute, Router, Params} from "@angular/router";
+import {setTimeout} from "timers";
+
+
 
 @Component({
   selector: 'vehicle-list',
@@ -18,6 +21,8 @@ export class VehiclesComponent implements OnInit{
   errorMessage: string;
   successMessage: string;
   clientId:string;
+  showSaveMessage:boolean;
+  processing:boolean = false;
   constructor(private _vehicleService: VehicleService,private _route:ActivatedRoute,private _router:Router) {
     this.showEdit = true;
   }
@@ -42,23 +47,40 @@ export class VehiclesComponent implements OnInit{
 
   onSaveVehicle(model) {
     console.log("Saving Vehicle")
-    console.log(model);
-
+    this.processing = true;
     this._vehicleService.saveVehicle(model).subscribe(v => {
         this.successMessage = v
       }, error => this.errorMessage = <any> error,
       () => this.saveComplete(model.dealerId));
-
-
-
   }
 
   saveComplete(dealershipId){
+    this.showSaveMessage = true;
 
     this._vehicleService.getVehicles(dealershipId).subscribe(v => {
         this.vehicles = v
       }, error => this.errorMessage = <any> error,
-      () => console.log(this.vehicles));
+      () => console.log("Vehicle Saved"));
+
+    this.processing = false;
+    setTimeout(() => {
+      this.showSaveMessage = false;
+    }, 3500);
   }
 
+
+
 }
+//
+// $(document).ready(function () {
+//
+//   alert("hellow there");
+//
+//   $('#vehiclesTable').DataTable({
+//     "paging": true,
+//     "ordering": false,
+//     "info": false
+//   });
+//
+// });
+

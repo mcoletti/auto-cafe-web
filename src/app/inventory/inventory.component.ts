@@ -23,12 +23,12 @@ export class InventoryComponent implements OnInit {
   clientId: string;
   client: Client;
   isAdmin: boolean;
-
+  dealerShipName:string;
   constructor(private route: ActivatedRoute, private _dealerShipService: DealerShipService, private _vehicleService: VehicleService, private _clientService: ClientService) {
 
 
     this.client = <Client>{name: ''}
-    this.clientId = "ad92e832-9830-49a5-98b5-9f9365fd20bd";
+    // this.clientId = "ad92e832-9830-49a5-98b5-9f9365fd20bd";
     this.isAdmin = true;
     // this._dealerShipService.getDealerShips("ad92e832-9830-49a5-98b5-9f9365fd20bd").subscribe(v => {
     //     this.dealerShips = v
@@ -66,10 +66,13 @@ export class InventoryComponent implements OnInit {
   //   this.sub.unsubscribe();
   // }
 
-  getVehicles(dealerShipId: string) {
+  getVehicles(dealerShip:DealerShip) {
+
+    let dealerShipId = dealerShip.id;
 
     if(typeof dealerShipId == "string"){
       console.log("Getting vehicles for DealerId " + dealerShipId);
+      this.dealerShipName = dealerShip.name;
       this._vehicleService.getVehicles(dealerShipId).subscribe(v => {
           this.vehicles = v
         }, error => this.errorMessage = <any> error,
@@ -79,16 +82,4 @@ export class InventoryComponent implements OnInit {
 
 
   }
-
-  dealerShipChange(dealerShipId) {
-
-    console.log(dealerShipId);
-    this.dealerShipId = dealerShipId;
-    // if (dealerShipId != 99) {
-    //   console.log(dealerShipId)
-    //   this.getVehicles(dealerShipId);
-    // }
-  }
-
-
 }

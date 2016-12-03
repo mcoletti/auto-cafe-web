@@ -12,11 +12,14 @@ export class DealerSelectorComponent implements OnInit {
   // @Output() select = new EventEmitter();
   @Input() dealerShips:DealerShip[];
   @Output() click = new EventEmitter();
+  @Output() change = new EventEmitter();
   constructor() {
 
-    console.log(this.dealerShips);
+    // console.log(this.dealerShips);
 
   }
+
+
 
   ngOnInit() {
     // this.click.emit('');
